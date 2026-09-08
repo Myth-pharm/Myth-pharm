@@ -6,59 +6,91 @@
 <title>MYTH Products</title>
 
 <style>
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     background: #f7f7f7;
     color: #222;
+    overflow-x: hidden;
 }
 
 .header {
     background: #111;
     color: white;
     text-align: center;
-    padding: 28px 15px;
+    padding: 30px 15px;
 }
 
 .header h1 {
     margin: 0;
-    font-size: 32px;
-    letter-spacing: 2px;
+    font-size: 38px;
+    letter-spacing: 3px;
 }
 
 .header p {
     margin: 8px 0 0;
-    font-size: 15px;
+    font-size: 17px;
 }
 
 .container {
-    max-width: 600px;
+    width: 100%;
+    max-width: 650px;
     margin: 25px auto;
     padding: 0 15px;
 }
 
+.intro {
+    text-align: center;
+    color: #555;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
 .product {
+    display: block;
+    width: 100%;
     background: white;
-    border-radius: 15px;
+    border-radius: 16px;
     padding: 22px;
     margin-bottom: 18px;
     box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+    text-decoration: none;
+    color: #222;
 }
 
 .product h2 {
-    margin-top: 0;
-    font-size: 22px;
+    margin: 0 0 10px;
+    font-size: 23px;
+}
+
+.size {
+    color: #666;
+    margin-bottom: 10px;
 }
 
 .price {
-    font-size: 25px;
+    font-size: 27px;
     font-weight: bold;
-    margin: 15px 0;
+    margin: 12px 0;
 }
 
-.info {
-    line-height: 1.8;
+.details {
     color: #555;
+    line-height: 1.7;
+}
+
+.badge {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 8px 14px;
+    border-radius: 20px;
+    background: #eeeeee;
+    color: #444;
+    font-size: 13px;
 }
 
 .footer {
@@ -79,27 +111,30 @@ body {
 
 <div class="container">
 
-    <div class="product">
-        <h2>MYTH Hair Lotion</h2>
-
-        <div class="info">
-            120 ml
-        </div>
-
-        <div class="price">
-            السعر: 299 EGP
-        </div>
-
-        <div class="info">
-            لوشن للعناية بالشعر وتقليل تساقط الشعر.
-        </div>
+    <div class="intro">
+        منتجات MYTH والأسعار الحالية
     </div>
 
-</div>
+    <a class="product" href="product.html?id=hair-lotion">
+        <h2>MYTH Hair Lotion</h2>
+        <div class="size">120 ml</div>
+        <div class="price">299 EGP</div>
+        <div class="details">
+            لوشن للعناية بالشعر وتقليل تساقط الشعر.
+        </div>
+        <span class="badge">عرض المنتج</span>
+    </a>
 
-<div class="footer">
-    © MYTH Products
-</div>
+    <a class="product" href="product.html?id=hair-shampoo">
+        <h2>MYTH Hair Shampoo</h2>
+        <div class="size">Hair Care</div>
+        <div class="price">250 EGP</div>
+        <div class="details">
+            شامبو للعناية وتنظيف الشعر.
+        </div>
+        <span class="badge">عرض المنتج</span>
+    </a>
 
-</body>
-</html>
+    <a class="product" href="product.html?id=hair-cream">
+        <h2>MYTH Hair Cream</h2>
+        <div class="size">Hair Care</
