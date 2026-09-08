@@ -123,357 +123,271 @@ body {
 }
 
 </style>
-
 </head>
 
 <body>
 
 <div class="header">
-
     <h1>MYTH</h1>
-
     <p>MYTH Products</p>
-
 </div>
-
 
 <div class="container">
 
 <div class="card">
 
-    <div class="product-name" id="productName">
-        MYTH Product
-    </div>
+<div class="product-name" id="productName">
+MYTH Product
+</div>
 
-    <div class="product-size" id="productSize">
-    </div>
+<div class="product-size" id="productSize">
+</div>
 
-    <div class="price-label">
-        السعر الحالي
-    </div>
+<div class="price-label">
+السعر الحالي
+</div>
 
-    <div class="price" id="productPrice">
-        ...
-    </div>
+<div class="price" id="productPrice">
+...
+</div>
 
-    <div class="description" id="productDescription">
-    </div>
+<div class="description" id="productDescription">
+</div>
 
+<div class="info">
 
-    <div class="info">
+<div class="info-row">
+<span class="info-label">
+رقم التشغيلة (Batch)
+</span>
 
-        <div class="info-row">
+<span class="info-value" id="productBatch">
+...
+</span>
+</div>
 
-            <span class="info-label">
-                رقم التشغيلة (Batch)
-            </span>
+<div class="info-row">
+<span class="info-label">
+تاريخ الإنتاج
+</span>
 
-            <span class="info-value" id="productBatch">
-                ...
-            </span>
+<span class="info-value" id="productionDate">
+...
+</span>
+</div>
 
-        </div>
+<div class="info-row">
+<span class="info-label">
+تاريخ الانتهاء
+</span>
 
-
-        <div class="info-row">
-
-            <span class="info-label">
-                تاريخ الإنتاج
-            </span>
-
-            <span class="info-value" id="productionDate">
-                ...
-            </span>
-
-        </div>
-
-
-        <div class="info-row">
-
-            <span class="info-label">
-                تاريخ الانتهاء
-            </span>
-
-            <span class="info-value" id="expiryDate">
-                ...
-            </span>
-
-        </div>
-
-    </div>
-
-
-    <a class="back" href="index.html">
-        العودة إلى المنتجات
-    </a>
-
+<span class="info-value" id="expiryDate">
+...
+</span>
 </div>
 
 </div>
 
+<a class="back" href="index.html">
+العودة إلى المنتجات
+</a>
+
+</div>
+
+</div>
 
 <div class="footer">
-    © MYTH Products
+© MYTH Products
 </div>
 
 
 <script>
 
-
 const API_URL =
 "https://script.google.com/macros/s/AKfycbzcl0QNieJxm9lhZ3Y8uBxmP1cs1JyfanQTuPwOpm7iw2apSycenPqPYnwsu26XyRG9/exec";
 
 
-
 const productInfo = {
 
-    "hair-lotion": {
+"hair-lotion": {
+name: "MYTH Hair Lotion",
+size: "120 ml",
+description: "لوشن للعناية بالشعر وتقليل تساقط الشعر."
+},
 
-        name: "MYTH Hair Lotion",
+"hair-shampoo": {
+name: "MYTH Hair Shampoo",
+size: "Hair Care",
+description: "شامبو للعناية وتنظيف الشعر."
+},
 
-        size: "120 ml",
+"hair-cream": {
+name: "MYTH Hair Cream",
+size: "Hair Care",
+description: "كريم لترطيب وتغذية الشعر."
+},
 
-        description:
-        "لوشن للعناية بالشعر وتقليل تساقط الشعر."
+"face-wash": {
+name: "MYTH Face Wash",
+size: "Face Care",
+description: "غسول لتنظيف البشرة والعناية بها."
+},
 
-    },
+"sun-screen": {
+name: "MYTH Sun Screen",
+size: "Sun Protection",
+description: "منتج للحماية من الأشعة الضارة."
+},
 
-
-    "hair-shampoo": {
-
-        name: "MYTH Hair Shampoo",
-
-        size: "Hair Care",
-
-        description:
-        "شامبو للعناية وتنظيف الشعر."
-
-    },
-
-
-    "hair-cream": {
-
-        name: "MYTH Hair Cream",
-
-        size: "Hair Care",
-
-        description:
-        "كريم لترطيب وتغذية الشعر."
-
-    },
-
-
-    "face-wash": {
-
-        name: "MYTH Face Wash",
-
-        size: "Face Care",
-
-        description:
-        "غسول لتنظيف البشرة والعناية بها."
-
-    },
-
-
-    "sun-screen": {
-
-        name: "MYTH Sun Screen",
-
-        size: "Sun Protection",
-
-        description:
-        "منتج للحماية من الأشعة الضارة."
-
-    },
-
-
-    "healing-cream": {
-
-        name: "MYTH Healing Cream",
-
-        size: "Skin Care",
-
-        description:
-        "كريم للعناية بالبشرة."
-
-    }
+"healing-cream": {
+name: "MYTH Healing Cream",
+size: "Skin Care",
+description: "كريم للعناية بالبشرة."
+}
 
 };
 
 
-
 function formatDate(value) {
 
-    if (!value)
+if (!value) {
+return "غير متوفر";
+}
 
-        return "غير متوفر";
+const match =
+String(value).match(/(\d{4})-(\d{2})-(\d{2})/);
 
+if (match) {
 
-    const match =
-        String(value).match(/(\d{4})-(\d{2})-(\d{2})/);
+return match[3] + "/" +
+       match[2] + "/" +
+       match[1];
 
+}
 
-    if (match) {
-
-        return match[3] + "/" +
-               match[2] + "/" +
-               match[1];
-
-    }
-
-
-    return String(value);
+return String(value);
 
 }
 
 
+const params =
+new URLSearchParams(window.location.search);
 
-const id =
-    new URLSearchParams(window.location.search).get("id");
+const id = params.get("id");
 
-
-
-const localInfo =
-    productInfo[id];
-
+const localInfo = productInfo[id];
 
 
 if (!id) {
 
-    document.getElementById("productName")
-        .textContent = "MYTH Product";
+document.getElementById("productName").textContent =
+"MYTH Product";
 
+document.getElementById("productPrice").textContent =
+"غير متوفر";
 
-    document.getElementById("productPrice")
-        .textContent = "غير متوفر";
-
-
-    document.getElementById("productDescription")
-        .textContent = "لم يتم تحديد المنتج.";
+document.getElementById("productDescription").textContent =
+"لم يتم تحديد المنتج.";
 
 }
 
 
 else {
 
+if (localInfo) {
 
-    if (localInfo) {
+document.getElementById("productName").textContent =
+localInfo.name;
 
-        document.getElementById("productName")
-            .textContent = localInfo.name;
+document.getElementById("productSize").textContent =
+localInfo.size;
 
+document.getElementById("productDescription").textContent =
+localInfo.description;
 
-        document.getElementById("productSize")
-            .textContent = localInfo.size;
-
-
-        document.getElementById("productDescription")
-            .textContent = localInfo.description;
-
-    }
+}
 
 
+fetch(
+API_URL +
+"?id=" +
+encodeURIComponent(id),
+{
+cache: "no-store"
+}
+)
 
-    fetch(
+.then(response => {
 
-        API_URL +
-        "?id=" +
-        encodeURIComponent(id),
+if (!response.ok) {
 
-        {
-            cache: "no-store"
-        }
+throw new Error("Network error");
 
-    )
+}
 
+return response.json();
 
-    .then(response => {
-
-        if (!response.ok)
-
-            throw new Error("Network error");
-
-
-        return response.json();
-
-    })
+})
 
 
-    .then(data => {
+.then(data => {
+
+if (data.error) {
+
+throw new Error(data.error);
+
+}
 
 
-        if (data.error)
-
-            throw new Error(data.error);
-
-
-
-        document.getElementById("productName")
-            .textContent =
-            data.product ||
-            (localInfo
-                ? localInfo.name
-                : "MYTH Product");
+document.getElementById("productName").textContent =
+data.product ||
+(localInfo ? localInfo.name : "MYTH Product");
 
 
-
-        document.getElementById("productPrice")
-            .textContent =
-            data.price !== undefined &&
-            data.price !== ""
-                ? data.price + " EGP"
-                : "غير متوفر";
-
-
-
-        document.getElementById("productBatch")
-            .textContent =
-            data.batch ||
-            "غير متوفر";
+document.getElementById("productPrice").textContent =
+data.price !== undefined &&
+data.price !== ""
+?
+data.price + " EGP"
+:
+"غير متوفر";
 
 
-
-        document.getElementById("productionDate")
-            .textContent =
-            formatDate(data.productionDate);
-
+document.getElementById("productBatch").textContent =
+data.batch ||
+"غير متوفر";
 
 
-        document.getElementById("expiryDate")
-            .textContent =
-            formatDate(data.expiryDate);
+document.getElementById("productionDate").textContent =
+formatDate(data.productionDate);
 
 
-    })
+document.getElementById("expiryDate").textContent =
+formatDate(data.expiryDate);
+
+})
 
 
-    .catch(error => {
+.catch(error => {
 
+document.getElementById("productPrice").textContent =
+"غير متوفر";
 
-        document.getElementById("productPrice")
-            .textContent = "غير متوفر";
+document.getElementById("productBatch").textContent =
+"غير متوفر";
 
+document.getElementById("productionDate").textContent =
+"غير متوفر";
 
-        document.getElementById("productBatch")
-            .textContent = "غير متوفر";
+document.getElementById("expiryDate").textContent =
+"غير متوفر";
 
+document.getElementById("productDescription").textContent =
+"تعذر تحميل بيانات المنتج حاليًا.";
 
-        document.getElementById("productionDate")
-            .textContent = "غير متوفر";
+console.error(error);
 
-
-        document.getElementById("expiryDate")
-            .textContent = "غير متوفر";
-
-
-        document.getElementById("productDescription")
-            .textContent =
-            "تعذر تحميل بيانات المنتج حاليًا.";
-
-
-        console.error(error);
-
-    });
+});
 
 }
 
