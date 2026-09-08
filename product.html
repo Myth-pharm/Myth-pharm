@@ -83,6 +83,29 @@ body {
     margin-bottom: 25px;
 }
 
+.info {
+    margin: 20px 0 25px;
+    border-top: 1px solid #eee;
+    padding-top: 18px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 16px;
+}
+
+.info-label {
+    color: #777;
+}
+
+.info-value {
+    font-weight: bold;
+}
+
 .back {
     display: inline-block;
     padding: 10px 18px;
@@ -100,129 +123,357 @@ body {
 }
 
 </style>
+
 </head>
 
 <body>
 
 <div class="header">
+
     <h1>MYTH</h1>
+
     <p>MYTH Products</p>
+
 </div>
+
 
 <div class="container">
 
 <div class="card">
 
-<div class="product-name" id="productName">
-MYTH Product
+    <div class="product-name" id="productName">
+        MYTH Product
+    </div>
+
+    <div class="product-size" id="productSize">
+    </div>
+
+    <div class="price-label">
+        السعر الحالي
+    </div>
+
+    <div class="price" id="productPrice">
+        ...
+    </div>
+
+    <div class="description" id="productDescription">
+    </div>
+
+
+    <div class="info">
+
+        <div class="info-row">
+
+            <span class="info-label">
+                رقم التشغيلة (Batch)
+            </span>
+
+            <span class="info-value" id="productBatch">
+                ...
+            </span>
+
+        </div>
+
+
+        <div class="info-row">
+
+            <span class="info-label">
+                تاريخ الإنتاج
+            </span>
+
+            <span class="info-value" id="productionDate">
+                ...
+            </span>
+
+        </div>
+
+
+        <div class="info-row">
+
+            <span class="info-label">
+                تاريخ الانتهاء
+            </span>
+
+            <span class="info-value" id="expiryDate">
+                ...
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <a class="back" href="index.html">
+        العودة إلى المنتجات
+    </a>
+
 </div>
 
-<div class="product-size" id="productSize">
 </div>
 
-<div class="price-label">
-السعر الحالي
-</div>
-
-<div class="price" id="productPrice">
-</div>
-
-<div class="description" id="productDescription">
-</div>
-
-<a class="back" href="index.html">
-العودة إلى المنتجات
-</a>
-
-</div>
-
-</div>
 
 <div class="footer">
-© MYTH Products
+    © MYTH Products
 </div>
 
 
 <script>
 
-const products = {
 
-"hair-lotion": {
-name: "MYTH Hair Lotion",
-size: "120 ml",
-price: "299 EGP",
-description: "لوشن للعناية بالشعر وتقليل تساقط الشعر."
-},
+const API_URL =
+"https://script.google.com/macros/s/AKfycbzcl0QNieJxm9lhZ3Y8uBxmP1cs1JyfanQTuPwOpm7iw2apSycenPqPYnwsu26XyRG9/exec";
 
-"hair-shampoo": {
-name: "MYTH Hair Shampoo",
-size: "Hair Care",
-price: "250 EGP",
-description: "شامبو للعناية وتنظيف الشعر."
-},
 
-"hair-cream": {
-name: "MYTH Hair Cream",
-size: "Hair Care",
-price: "150 EGP",
-description: "كريم لترطيب وتغذية الشعر."
-},
 
-"face-wash": {
-name: "MYTH Face Wash",
-size: "Face Care",
-price: "230 EGP",
-description: "غسول لتنظيف البشرة والعناية بها."
-},
+const productInfo = {
 
-"sun-screen": {
-name: "MYTH Sun Screen",
-size: "Sun Protection",
-price: "260 EGP",
-description: "منتج للحماية من الأشعة الضارة."
-},
+    "hair-lotion": {
 
-"healing-cream": {
-name: "MYTH Healing Cream",
-size: "Skin Care",
-price: "250 EGP",
-description: "كريم للعناية بالبشرة."
-}
+        name: "MYTH Hair Lotion",
+
+        size: "120 ml",
+
+        description:
+        "لوشن للعناية بالشعر وتقليل تساقط الشعر."
+
+    },
+
+
+    "hair-shampoo": {
+
+        name: "MYTH Hair Shampoo",
+
+        size: "Hair Care",
+
+        description:
+        "شامبو للعناية وتنظيف الشعر."
+
+    },
+
+
+    "hair-cream": {
+
+        name: "MYTH Hair Cream",
+
+        size: "Hair Care",
+
+        description:
+        "كريم لترطيب وتغذية الشعر."
+
+    },
+
+
+    "face-wash": {
+
+        name: "MYTH Face Wash",
+
+        size: "Face Care",
+
+        description:
+        "غسول لتنظيف البشرة والعناية بها."
+
+    },
+
+
+    "sun-screen": {
+
+        name: "MYTH Sun Screen",
+
+        size: "Sun Protection",
+
+        description:
+        "منتج للحماية من الأشعة الضارة."
+
+    },
+
+
+    "healing-cream": {
+
+        name: "MYTH Healing Cream",
+
+        size: "Skin Care",
+
+        description:
+        "كريم للعناية بالبشرة."
+
+    }
 
 };
 
 
-const params = new URLSearchParams(window.location.search);
 
-const id = params.get("id");
+function formatDate(value) {
 
-const product = products[id];
+    if (!value)
+
+        return "غير متوفر";
 
 
-if (product) {
+    const match =
+        String(value).match(/(\d{4})-(\d{2})-(\d{2})/);
 
-document.getElementById("productName").textContent =
-product.name;
 
-document.getElementById("productSize").textContent =
-product.size;
+    if (match) {
 
-document.getElementById("productPrice").textContent =
-product.price;
+        return match[3] + "/" +
+               match[2] + "/" +
+               match[1];
 
-document.getElementById("productDescription").textContent =
-product.description;
+    }
 
-} else {
 
-document.getElementById("productName").textContent =
-"MYTH Product";
+    return String(value);
 
-document.getElementById("productPrice").textContent =
-"غير متوفر";
+}
 
-document.getElementById("productDescription").textContent =
-"المنتج غير موجود.";
+
+
+const id =
+    new URLSearchParams(window.location.search).get("id");
+
+
+
+const localInfo =
+    productInfo[id];
+
+
+
+if (!id) {
+
+    document.getElementById("productName")
+        .textContent = "MYTH Product";
+
+
+    document.getElementById("productPrice")
+        .textContent = "غير متوفر";
+
+
+    document.getElementById("productDescription")
+        .textContent = "لم يتم تحديد المنتج.";
+
+}
+
+
+else {
+
+
+    if (localInfo) {
+
+        document.getElementById("productName")
+            .textContent = localInfo.name;
+
+
+        document.getElementById("productSize")
+            .textContent = localInfo.size;
+
+
+        document.getElementById("productDescription")
+            .textContent = localInfo.description;
+
+    }
+
+
+
+    fetch(
+
+        API_URL +
+        "?id=" +
+        encodeURIComponent(id),
+
+        {
+            cache: "no-store"
+        }
+
+    )
+
+
+    .then(response => {
+
+        if (!response.ok)
+
+            throw new Error("Network error");
+
+
+        return response.json();
+
+    })
+
+
+    .then(data => {
+
+
+        if (data.error)
+
+            throw new Error(data.error);
+
+
+
+        document.getElementById("productName")
+            .textContent =
+            data.product ||
+            (localInfo
+                ? localInfo.name
+                : "MYTH Product");
+
+
+
+        document.getElementById("productPrice")
+            .textContent =
+            data.price !== undefined &&
+            data.price !== ""
+                ? data.price + " EGP"
+                : "غير متوفر";
+
+
+
+        document.getElementById("productBatch")
+            .textContent =
+            data.batch ||
+            "غير متوفر";
+
+
+
+        document.getElementById("productionDate")
+            .textContent =
+            formatDate(data.productionDate);
+
+
+
+        document.getElementById("expiryDate")
+            .textContent =
+            formatDate(data.expiryDate);
+
+
+    })
+
+
+    .catch(error => {
+
+
+        document.getElementById("productPrice")
+            .textContent = "غير متوفر";
+
+
+        document.getElementById("productBatch")
+            .textContent = "غير متوفر";
+
+
+        document.getElementById("productionDate")
+            .textContent = "غير متوفر";
+
+
+        document.getElementById("expiryDate")
+            .textContent = "غير متوفر";
+
+
+        document.getElementById("productDescription")
+            .textContent =
+            "تعذر تحميل بيانات المنتج حاليًا.";
+
+
+        console.error(error);
+
+    });
 
 }
 
