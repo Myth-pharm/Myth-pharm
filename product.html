@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MYTH Product</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f7f7f7;
+    color: #222;
+}
+
+.header {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 30px 15px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 38px;
+    letter-spacing: 3px;
+}
+
+.header p {
+    margin: 8px 0 0;
+    font-size: 17px;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 0 15px;
+}
+
+.card {
+    background: white;
+    border-radius: 18px;
+    padding: 30px 22px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+.product-name {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.product-size {
+    color: #666;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.price-label {
+    font-size: 18px;
+    color: #555;
+}
+
+.price {
+    font-size: 38px;
+    font-weight: bold;
+    margin: 8px 0 25px;
+}
+
+.description {
+    color: #555;
+    font-size: 17px;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+.back {
+    display: inline-block;
+    padding: 10px 18px;
+    background: #eee;
+    color: #333;
+    border-radius: 20px;
+    text-decoration: none;
+}
+
+.footer {
+    text-align: center;
+    padding: 30px;
+    color: #777;
+    font-size: 13px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>MYTH</h1>
+    <p>MYTH Products</p>
+</div>
+
+<div class="container">
+
+<div class="card">
+
+<div class="product-name" id="productName">
+MYTH Product
+</div>
+
+<div class="product-size" id="productSize">
+</div>
+
+<div class="price-label">
+السعر الحالي
+</div>
+
+<div class="price" id="productPrice">
+</div>
+
+<div class="description" id="productDescription">
+</div>
+
+<a class="back" href="index.html">
+العودة إلى المنتجات
+</a>
+
+</div>
+
+</div>
+
+<div class="footer">
+© MYTH Products
+</div>
+
+
+<script>
+
+const products = {
+
+"hair-lotion": {
+name: "MYTH Hair Lotion",
+size: "120 ml",
+price: "299 EGP",
+description: "لوشن للعناية بالشعر وتقليل تساقط الشعر."
+},
+
+"hair-shampoo": {
+name: "MYTH Hair Shampoo",
+size: "Hair Care",
+price: "250 EGP",
+description: "شامبو للعناية وتنظيف الشعر."
+},
+
+"hair-cream": {
+name: "MYTH Hair Cream",
+size: "Hair Care",
+price: "150 EGP",
+description: "كريم لترطيب وتغذية الشعر."
+},
+
+"face-wash": {
+name: "MYTH Face Wash",
+size: "Face Care",
+price: "230 EGP",
+description: "غسول لتنظيف البشرة والعناية بها."
+},
+
+"sun-screen": {
+name: "MYTH Sun Screen",
+size: "Sun Protection",
+price: "260 EGP",
+description: "منتج للحماية من الأشعة الضارة."
+},
+
+"healing-cream": {
+name: "MYTH Healing Cream",
+size: "Skin Care",
+price: "250 EGP",
+description: "كريم للعناية بالبشرة."
+}
+
+};
+
+
+const params = new URLSearchParams(window.location.search);
+
+const id = params.get("id");
+
+const product = products[id];
+
+
+if (product) {
+
+document.getElementById("productName").textContent =
+product.name;
+
+document.getElementById("productSize").textContent =
+product.size;
+
+document.getElementById("productPrice").textContent =
+product.price;
+
+document.getElementById("productDescription").textContent =
+product.description;
+
+} else {
+
+document.getElementById("productName").textContent =
+"MYTH Product";
+
+document.getElementById("productPrice").textContent =
+"غير متوفر";
+
+document.getElementById("productDescription").textContent =
+"المنتج غير موجود.";
+
+}
+
+</script>
+
+</body>
+
+</html>
