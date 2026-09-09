@@ -9,259 +9,424 @@
 
 <style>
 
-* {
-    box-sizing: border-box;
+*{
+    box-sizing:border-box;
 }
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f7f7f7;
-    color: #222;
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f7f7f7;
+    color:#222;
 }
 
-.header {
-    background: #111;
-    color: white;
-    text-align: center;
-    padding: 30px 15px;
+.header{
+    background:#111;
+    color:white;
+    text-align:center;
+    padding:30px 15px;
 }
 
-.header h1 {
-    margin: 0;
-    font-size: 38px;
-    letter-spacing: 3px;
+.header h1{
+    margin:0;
+    font-size:38px;
+    letter-spacing:3px;
 }
 
-.header p {
-    margin: 8px 0 0;
-    font-size: 17px;
+.header p{
+    margin:8px 0 0;
+    font-size:17px;
 }
 
-.container {
-    width: 100%;
-    max-width: 600px;
-    margin: 30px auto;
-    padding: 0 15px;
+.container{
+    width:100%;
+    max-width:600px;
+    margin:30px auto;
+    padding:0 15px;
 }
 
-.card {
-    background: white;
-    border-radius: 18px;
-    padding: 30px 22px;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.08);
-    text-align: center;
+.card{
+    background:white;
+    border-radius:18px;
+    padding:25px 22px 30px;
+    box-shadow:0 4px 18px rgba(0,0,0,.08);
+    text-align:center;
 }
 
-.product-name {
-    font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 15px;
+/* صورة المنتج */
+
+.product-image{
+    width:100%;
+    max-width:360px;
+    height:320px;
+    object-fit:contain;
+    display:block;
+    margin:0 auto 20px;
+    border-radius:14px;
 }
 
-.product-size {
-    color: #666;
-    font-size: 18px;
-    margin-bottom: 20px;
+/* اسم المنتج */
+
+.product-name{
+    font-size:28px;
+    font-weight:bold;
+    margin-bottom:15px;
 }
 
-.price-label {
-    font-size: 18px;
-    color: #555;
+.product-size{
+    color:#666;
+    font-size:18px;
+    margin-bottom:20px;
 }
 
-.price {
-    font-size: 38px;
-    font-weight: bold;
-    margin: 8px 0 25px;
+.price-label{
+    font-size:18px;
+    color:#555;
 }
 
-.description {
-    color: #555;
-    font-size: 17px;
-    line-height: 1.8;
-    margin-bottom: 25px;
+.price{
+    font-size:38px;
+    font-weight:bold;
+    margin:8px 0 25px;
 }
 
-.info {
-    margin: 20px 0 25px;
-    border-top: 1px solid #eee;
-    padding-top: 18px;
+.description{
+    color:#555;
+    font-size:17px;
+    line-height:1.8;
+    margin-bottom:25px;
 }
 
-.info-row {
-    display: flex;
-    justify-content: space-between;
-    gap: 15px;
-    padding: 10px 0;
-    border-bottom: 1px solid #f0f0f0;
-    font-size: 16px;
+.info{
+    margin:20px 0 25px;
+    border-top:1px solid #eee;
+    padding-top:18px;
 }
 
-.info-label {
-    color: #777;
+.info-row{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    padding:10px 0;
+    border-bottom:1px solid #f0f0f0;
+    font-size:16px;
 }
 
-.info-value {
-    font-weight: bold;
+.info-label{
+    color:#777;
 }
 
-.back {
-    display: inline-block;
-    padding: 10px 18px;
-    background: #eee;
-    color: #333;
-    border-radius: 20px;
-    text-decoration: none;
+.info-value{
+    font-weight:bold;
 }
 
-.footer {
-    text-align: center;
-    padding: 30px;
-    color: #777;
-    font-size: 13px;
+.back{
+    display:inline-block;
+    padding:10px 18px;
+    background:#eee;
+    color:#333;
+    border-radius:20px;
+    text-decoration:none;
+}
+
+.footer{
+    text-align:center;
+    padding:30px;
+    color:#777;
+    font-size:13px;
 }
 
 </style>
 </head>
 
+
 <body>
 
 <div class="header">
-    <h1>MYTH</h1>
-    <p>MYTH Products</p>
+
+<h1>MYTH</h1>
+
+<p>MYTH Products</p>
+
 </div>
+
 
 <div class="container">
 
 <div class="card">
 
-<div class="product-name" id="productName">
+
+<!-- صورة المنتج -->
+
+<img
+class="product-image"
+id="productImage"
+src=""
+alt="MYTH Product"
+onerror="this.style.display='none';">
+
+
+<!-- اسم المنتج -->
+
+<div
+class="product-name"
+id="productName">
+
 MYTH Product
+
 </div>
 
-<div class="product-size" id="productSize">
+
+<!-- الحجم -->
+
+<div
+class="product-size"
+id="productSize">
+
 </div>
+
+
+<!-- السعر -->
 
 <div class="price-label">
+
 السعر الحالي
+
 </div>
 
-<div class="price" id="productPrice">
+
+<div
+class="price"
+id="productPrice">
+
 ...
+
 </div>
 
-<div class="description" id="productDescription">
+
+<!-- الوصف -->
+
+<div
+class="description"
+id="productDescription">
+
 </div>
+
+
+<!-- البيانات -->
 
 <div class="info">
 
+
 <div class="info-row">
+
 <span class="info-label">
 رقم التشغيلة (Batch)
 </span>
 
-<span class="info-value" id="productBatch">
+<span
+class="info-value"
+id="productBatch">
+
 ...
+
 </span>
+
 </div>
 
+
 <div class="info-row">
+
 <span class="info-label">
 تاريخ الإنتاج
 </span>
 
-<span class="info-value" id="productionDate">
+<span
+class="info-value"
+id="productionDate">
+
 ...
+
 </span>
+
 </div>
 
+
 <div class="info-row">
+
 <span class="info-label">
 تاريخ الانتهاء
 </span>
 
-<span class="info-value" id="expiryDate">
+<span
+class="info-value"
+id="expiryDate">
+
 ...
+
 </span>
-</div>
 
 </div>
 
-<a class="back" href="index.html">
+
+</div>
+
+
+<a
+class="back"
+href="index.html">
+
 العودة إلى المنتجات
+
 </a>
 
+
 </div>
 
 </div>
+
 
 <div class="footer">
+
 © MYTH Products
+
 </div>
 
 
 <script>
 
+
+/* Google Sheets API */
+
 const API_URL =
 "https://script.google.com/macros/s/AKfycbzcl0QNieJxm9lhZ3Y8uBxmP1cs1JyfanQTuPwOpm7iw2apSycenPqPYnwsu26XyRG9/exec";
 
 
+/* =========================
+   المنتجات والصور
+========================= */
+
 const productInfo = {
 
-"hair-lotion": {
-name: "MYTH Hair Lotion",
-size: "120 ml",
-description: "لوشن للعناية بالشعر وتقليل تساقط الشعر."
+
+"hair-lotion":{
+
+name:"MYTH Hair Lotion",
+
+size:"120 ml",
+
+description:
+"لوشن للعناية بالشعر وتقليل تساقط الشعر.",
+
+image:
+"https://raw.githubusercontent.com/Myth-pharm/MYTH-QR/main/IMG-20240421-WA0026.jpg"
+
 },
 
-"hair-shampoo": {
-name: "MYTH Hair Shampoo",
-size: "Hair Care",
-description: "شامبو للعناية وتنظيف الشعر."
+
+"hair-shampoo":{
+
+name:"MYTH Hair Shampoo",
+
+size:"Hair Care",
+
+description:
+"شامبو للعناية وتنظيف الشعر.",
+
+image:
+"https://raw.githubusercontent.com/Myth-pharm/MYTH-QR/main/IMG-20240421-WA0023.jpg"
+
 },
 
-"hair-cream": {
-name: "MYTH Hair Cream",
-size: "Hair Care",
-description: "كريم لترطيب وتغذية الشعر."
+
+"hair-cream":{
+
+name:"MYTH Hair Cream",
+
+size:"Hair Care",
+
+description:
+"كريم لترطيب وتغذية الشعر.",
+
+image:
+"https://raw.githubusercontent.com/Myth-pharm/MYTH-QR/main/IMG-20250621-WA0009.jpg"
+
 },
 
-"face-wash": {
-name: "MYTH Face Wash",
-size: "Face Care",
-description: "غسول لتنظيف البشرة والعناية بها."
+
+"face-wash":{
+
+name:"MYTH Face Wash",
+
+size:"Face Care",
+
+description:
+"غسول لتنظيف البشرة والعناية بها.",
+
+image:
+"https://raw.githubusercontent.com/Myth-pharm/MYTH-QR/main/IMG-20240421-WA0024.jpg"
+
 },
 
-"sun-screen": {
-name: "MYTH Sun Screen",
-size: "Sun Protection",
-description: "منتج للحماية من الأشعة الضارة."
+
+"sun-screen":{
+
+name:"MYTH Sun Screen",
+
+size:"Sun Protection",
+
+description:
+"منتج للحماية من الأشعة الضارة.",
+
+image:
+"https://raw.githubusercontent.com/Myth-pharm/MYTH-QR/main/sun%20screen.png"
+
 },
 
-"healing-cream": {
-name: "MYTH Healing Cream",
-size: "Skin Care",
-description: "كريم للعناية بالبشرة."
+
+"healing-cream":{
+
+name:"MYTH Healing Cream",
+
+size:"Skin Care",
+
+description:
+"كريم للعناية بالبشرة.",
+
+image:
+"https://raw.githubusercontent.com/Myth-pharm/MYTH-QR/main/file_0000000056d4820abc00f0597b1d3b1d.png"
+
 }
 
 };
 
 
-function formatDate(value) {
+/* =========================
+   التاريخ
+========================= */
 
-if (!value) {
+function formatDate(value){
+
+if(!value){
+
 return "غير متوفر";
+
 }
 
 const match =
-String(value).match(/(\d{4})-(\d{2})-(\d{2})/);
+String(value).match(
+/(\d{4})-(\d{2})-(\d{2})/
+);
 
-if (match) {
+if(match){
 
-return match[3] + "/" +
-       match[2] + "/" +
-       match[1];
+return (
+match[3] +
+"/" +
+match[2] +
+"/" +
+match[1]
+);
 
 }
 
@@ -270,124 +435,194 @@ return String(value);
 }
 
 
+/* =========================
+   معرفة المنتج من QR
+========================= */
+
 const params =
-new URLSearchParams(window.location.search);
+new URLSearchParams(
+window.location.search
+);
 
-const id = params.get("id");
-
-const localInfo = productInfo[id];
-
-
-if (!id) {
-
-document.getElementById("productName").textContent =
-"MYTH Product";
-
-document.getElementById("productPrice").textContent =
-"غير متوفر";
-
-document.getElementById("productDescription").textContent =
-"لم يتم تحديد المنتج.";
-
-}
+const id =
+params.get("id");
 
 
-else {
+const localInfo =
+productInfo[id];
 
-if (localInfo) {
 
-document.getElementById("productName").textContent =
+/* =========================
+   إذا كان المنتج موجود
+========================= */
+
+if(localInfo){
+
+
+/* الصورة */
+
+document
+.getElementById("productImage")
+.src =
+localInfo.image;
+
+
+/* الاسم */
+
+document
+.getElementById("productName")
+.textContent =
 localInfo.name;
 
-document.getElementById("productSize").textContent =
+
+/* الحجم */
+
+document
+.getElementById("productSize")
+.textContent =
 localInfo.size;
 
-document.getElementById("productDescription").textContent =
+
+/* الوصف */
+
+document
+.getElementById("productDescription")
+.textContent =
 localInfo.description;
+
+
+/* النص البديل */
+
+document
+.getElementById("productImage")
+.alt =
+localInfo.name;
 
 }
 
 
+/* =========================
+   تحميل البيانات من Google Sheets
+========================= */
+
+if(id){
+
 fetch(
+
 API_URL +
 "?id=" +
 encodeURIComponent(id),
+
 {
-cache: "no-store"
+cache:"no-store"
 }
+
 )
 
-.then(response => {
 
-if (!response.ok) {
+.then(
 
-throw new Error("Network error");
+response => {
+
+if(!response.ok){
+
+throw new Error(
+"Network error"
+);
 
 }
 
 return response.json();
 
-})
+}
+
+)
 
 
-.then(data => {
+.then(
 
-if (data.error) {
+data => {
 
-throw new Error(data.error);
+
+if(data.error){
+
+throw new Error(
+data.error
+);
 
 }
 
 
-document.getElementById("productName").textContent =
-data.product ||
-(localInfo ? localInfo.name : "MYTH Product");
+/* الاسم */
+
+if(data.product){
+
+document
+.getElementById("productName")
+.textContent =
+data.product;
+
+}
 
 
-document.getElementById("productPrice").textContent =
+/* السعر */
+
+if(
 data.price !== undefined &&
 data.price !== ""
-?
-data.price + " EGP"
-:
-"غير متوفر";
+){
+
+document
+.getElementById("productPrice")
+.textContent =
+data.price +
+" EGP";
+
+}
 
 
-document.getElementById("productBatch").textContent =
+/* Batch */
+
+document
+.getElementById("productBatch")
+.textContent =
 data.batch ||
 "غير متوفر";
 
 
-document.getElementById("productionDate").textContent =
-formatDate(data.productionDate);
+/* تاريخ الإنتاج */
+
+document
+.getElementById("productionDate")
+.textContent =
+formatDate(
+data.productionDate
+);
 
 
-document.getElementById("expiryDate").textContent =
-formatDate(data.expiryDate);
+/* تاريخ الانتهاء */
 
-})
+document
+.getElementById("expiryDate")
+.textContent =
+formatDate(
+data.expiryDate
+);
+
+}
+
+)
 
 
-.catch(error => {
+.catch(
 
-document.getElementById("productPrice").textContent =
-"غير متوفر";
-
-document.getElementById("productBatch").textContent =
-"غير متوفر";
-
-document.getElementById("productionDate").textContent =
-"غير متوفر";
-
-document.getElementById("expiryDate").textContent =
-"غير متوفر";
-
-document.getElementById("productDescription").textContent =
-"تعذر تحميل بيانات المنتج حاليًا.";
+error => {
 
 console.error(error);
 
-});
+}
+
+);
 
 }
 
